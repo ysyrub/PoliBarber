@@ -19,6 +19,6 @@ services:
       - key: ADMIN_PASSWORD
         value: poli123
       - key: CLIENT_URL
-        value: http://localhost:5173
+        value: https://poli-barber-msj1n0gek-ysyrubs-projects.vercel.app
       - key: MONGO_URI
         sync: false
