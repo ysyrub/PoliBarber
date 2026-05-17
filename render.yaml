@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: polibarber-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 8h
+      - key: ADMIN_USER
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: poli123
+      - key: CLIENT_URL
+        value: http://localhost:5173
+      - key: MONGO_URI
+        sync: false
