@@ -14,6 +14,7 @@ import publicRoutes from "./routes/public.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import { errorHandler, notFoundHandler } from "./middleware/error.middleware.js";
 import { sanitizeRequest } from "./middleware/sanitize.middleware.js";
+import { ensureDefaultData } from "./services/seedDefaults.service.js";
 
 // Carga variables desde backend/.env. Si no existe, se usan valores por defecto seguros para desarrollo.
 dotenv.config();
@@ -80,6 +81,7 @@ app.use(errorHandler);
 // startServer conecta la base de datos antes de aceptar requests.
 const startServer = async () => {
   await connectDB();
+  await ensureDefaultData();
   app.listen(PORT, () => {
     console.log(`PoliBarber API escuchando en http://localhost:${PORT}`);
   });
